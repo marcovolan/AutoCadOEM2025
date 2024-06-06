@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "AutoCad": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Public\\Documents\\AutoCAD OEM 2025\\build\\TinCAD\\TinCAD.exe",
+      "nativeDebugging": true
+    }
+  }
+}

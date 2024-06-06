@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyVersion>2024.6.6.21</AssemblyVersion>
+		<FileVersion>2024.6.6.21</FileVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App"></FrameworkReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SharedInterface\SharedInterface.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="accoremgd">
+			<HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD OEM 2025 - English\Arx\inc\AcCoreMgd.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Acdbmgd">
+			<HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD OEM 2025 - English\Arx\inc\AcDbMgd.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="acmgd">
+			<HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD OEM 2025 - English\Arx\inc\AcMgd.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="call &quot;$(ProjectDir)postbuildOEM.bat&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)&quot; &quot;$(TargetName)&quot; &quot;$(Public)&quot; &quot;$(AppData)&quot; &quot;$(Configuration)&quot;" />
+	</Target>
+
+</Project>
